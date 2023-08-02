@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangle Checker</title>
+</head>
+<body>
+
+<script>
+    function isTriangle(a, b, c) {
+        return a + b > c && a + c > b && b + c > a;
+    }
+
+    function classifyTriangle(a, b, c) {
+        if (a === b && b === c) {
+            return "equilateral";
+        } else if (a === b || a === c || b === c) {
+            return "isosceles";
+        } else {
+            return "scalene";
+        }
+    }
+
+    function checkTriangle() {
+        var side1 = parseFloat(prompt("Enter the length of the first side:"));
+        var side2 = parseFloat(prompt("Enter the length of the second side:"));
+        var side3 = parseFloat(prompt("Enter the length of the third side:"));
+
+        if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
+            alert("Invalid input. Please enter valid numbers.");
+            return;
+        }
+
+        if (!isTriangle(side1, side2, side3)) {
+            alert("These sides cannot form a triangle.");
+            return;
+        }
+
+        var triangleType = classifyTriangle(side1, side2, side3);
+        alert("These sides can form a " + triangleType + " triangle.");
+    }
+
+    // Call the checkTriangle function when the page loads
+    window.onload = function () {
+        checkTriangle();
+    };
+</script>
+
+</body>
+</html>

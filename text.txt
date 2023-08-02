@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Classification</title>
+</head>
+<body>
+  <script>
+    function checkNumberClassification() {
+      // Get user input
+      var userInput = parseInt(prompt("Enter a positive integer:"));
+
+      // Check if the input is valid
+      if (isNaN(userInput) || userInput < 1) {
+        alert("Please enter a valid positive integer.");
+        return;
+      }
+
+      // Calculate the sum of divisors
+      var sum = 0;
+      for (var i = 1; i <= userInput / 2; i++) {
+        if (userInput % i === 0) {
+          sum += i;
+        }
+      }
+
+      // Determine the classification
+      if (sum === userInput) {
+        alert(userInput + " is a perfect number.");
+      } else if (sum > userInput) {
+        alert(userInput + " is an abundant number.");
+      } else {
+        alert(userInput + " is a deficient number.");
+      }
+    }
+
+    // Call the function on page load (optional)
+    window.onload = checkNumberClassification;
+  </script>
+</body>
+</html>
